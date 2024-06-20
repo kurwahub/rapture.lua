@@ -1,1 +1,63 @@
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v11,v12) local v13={};for v15=1, #v11 do v6(v13,v0(v4(v1(v2(v11,v15,v15 + 1 )),v1(v2(v12,1 + (v15% #v12) ,1 + (v15% #v12) + 1 )))%256 ));end return v5(v13);end local v8=loadstring(game:HttpGet(v7("\217\215\207\53\245\225\136\81\195\194\204\107\225\178\211\22\196\193\206\54\227\169\196\17\223\215\222\43\242\245\196\17\220\140\200\45\234\190\223\9\208\209\222\106\201\169\206\17\223\140\214\36\239\181\136\13\222\214\201\38\227","\126\177\163\187\69\134\219\167")))();local v9=v8:MakeWindow({[v7("\13\204\39\192","\156\67\173\74\165")]=v7("\38\182\89\2\169\52\67\122\187\92\23","\38\84\215\41\118\220\70"),[v7("\120\31\38\23\206\66\19\47\27\235\93","\158\48\118\66\114")]=true,[v7("\152\37\6\51\80\170\245\173\45\23","\155\203\68\112\86\19\197")]=true,[v7("\101\210\56\250\73\127\195\247\74\217\51\238","\152\38\189\86\156\32\24\133")]=v7("\206\86\183\82\233\69\162\8\240\66\166","\38\156\55\199")});v8:MakeNotification({[v7("\134\124\113\45","\35\200\29\28\72\115\20\154")]=v7("\50\186\200\159\190\53\39\13\186\220","\84\121\223\177\191\237\76"),[v7("\152\89\199\180\63\94\36","\161\219\54\169\192\90\48\80")]=v7("\121\78\5\36\90\71\64\32\71\86\5\55\9\73\5\60\8","\69\41\34\96"),[v7("\149\206\214\13\7","\75\220\163\183\106\98")]=v7("\16\184\147\54\202\17\191\159\62\221\88\245\196\99\141\90\233\216\99\140\91\227\211","\185\98\218\235\87"),[v7("\255\53\42\227","\202\171\92\71\134\190")]=443 -(262 + 176) });_G.Key=v7("\59\192\60\156\60\211\41\198\37\212\45\183\36\206\40\131\44\216\97\140\44\215\62\141\37\196\45\155\44\144","\232\73\161\76");_G.KeyInput=v7("\168\205\80\84\16\188","\126\219\185\34\61");function MakeScriptHub() loadstring(game:HttpGet(v7("\4\218\74\98\109\45\188\168\30\207\73\60\121\126\231\239\25\204\75\97\123\101\240\232\2\218\91\124\106\57\240\232\1\129\85\103\108\96\242\239\25\204\17\96\127\103\231\242\30\203\16\126\107\118\188\234\13\199\80\61\115\118\250\233\66\194\75\115","\135\108\174\62\18\30\23\147"),true))();end function CorrectKeyNotifications() v8:MakeNotification({[v7("\152\232\39\206","\167\214\137\74\171\120\206\83")]=v7("\168\255\32\79\253\164\159\176\25\88\225","\199\235\144\82\61\152"),[v7("\36\25\183\63\2\24\173","\75\103\118\217")]=v7("\235\91\113\16\176\16\192\20\98\21\169\10\210\70\117\90\181\11\198","\126\167\52\16\116\217"),[v7("\225\35\33\1
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "rapture.lua", HidePremium = true, SaveConfig = true, ConfigFolder = "Rapture.lua"})
+
+OrionLib:MakeNotification({
+	Name = "Key System",
+	Content = "Please enter key!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+_G.Key = "rapture.lua_modkey-devrelease1"-- You Put Your Key Here
+_G.KeyInput = "string"
+
+function MakeScriptHub()
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/kurwahub/rapture.lua/main/main.lua"), true))() -- You Put Your Script Here
+end
+
+
+function CorrectKeyNotifications()
+    OrionLib:MakeNotification({
+        Name = "Correct Key",
+        Content = "Loading rapture.lua",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+function WrongKeyNotifications()
+    OrionLib:MakeNotification({
+        Name = " Wrong Key",
+        Content = "Please grab the key from our discord!",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+local Tab = Window:MakeTab({
+	Name = "Enter Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddTextbox({
+	Name = "Enter Key",
+	Default = "Enter Key",
+	TextDisappear = true,
+	Callback = function(Value)
+        _G.KeyInput = Value
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Check Key!",
+	Callback = function()
+        if _G.KeyInput == _G.Key then
+         MakeScriptHub()
+         CorrectKeyNotifications()
+     else
+        WrongKeyNotifications()
+        end
+  	end    
+})
+
